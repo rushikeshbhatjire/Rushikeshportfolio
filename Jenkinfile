@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clone Repo') {
+            steps {
+                git 'https://github.com/rushikeshbhatjire/Rushikeshportfolio.git'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh '''
+                rm -rf /usr/share/nginx/html/*
+                cp -r * /usr/share/nginx/html/
+                '''
+            }
+        }
+    }
+}
