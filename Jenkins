@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout Code') {
+            steps {
+                git 'https://github.com/rushikeshbhatjire/Rushikeshportfolio.git'
+            }
+        }
+
+        stage('Verify Files') {
+            steps {
+                echo "Checking project files..."
+                sh 'ls -l'
+            }
+        }
+
+        stage('Run Basic Test') {
+            steps {
+                echo "Running basic test..."
+                sh 'echo Portfolio project is working fine'
+            }
+        }
+
+    }
+}
